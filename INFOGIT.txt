@@ -1,0 +1,118 @@
+INFO PARA GIT
+
+*Comenzar configuración global, es decir la configuración del usuario.
+	Para dictaminar un username la instrucción es la siguiente
+		git config --global user.name "AxelSandoval"
+	Para dictaminar el email del usuario la instrucción es la siguiente
+		git config --global user.email "axesan917@gmail.com"
+	Ahora gracias a estas instrucciónes Git ha creado un archivo en el 
+	usuario llamado .gitconfig en donde dentro se encuentra por texto
+	las configuraciones que acabamos de hacer, el nombre del usuario 
+	y el correo.
+
+*Para crear un archivo en git.
+	Dado a que estamos en una terminal muy parecida a linux, simplemente
+	con la instrucción touch y la extensión del archivo nos crea el fichero
+		touch hellogit.py
+
+*Para inicializar un control de versiones.
+	Nos ubicamos en el directorio raiz donde queremos inicializar el contexto
+	de git y escribimos lo siguiente.
+		git init
+	Esta instrucción crea una carpeta oculta en la que el control de versiones 
+	se inicializa.
+
+*Pagina para tunear la terminal
+	https://ohmyz.sh
+
+*Renombrar Ramas
+	Para este caso utilizaremos la rama principal "Master" que se nos ha creado cuando
+	inicializamos el control de versiones, entonces le cambiaremos el nombre a main
+		git branch -m main
+
+*Revisar el estado de nuestro proyecto
+	git status
+
+*Añadir ficheros para versionar
+	git add hellogit.py
+		En este caso yo seleccione el fichero hellogit.py pero puede ser cualquiera.
+
+*Comenzar la primera versión guardada del fichero seleccionado en stage
+	git commit "Este es mi primer commit"
+		Entre las comillas va el cambio que guardaste
+
+*Revisar los commits 
+	git log
+
+*Regresar los cambios al punto donde se creó el commit
+	git checkout
+
+*Regresar los cambios al ultimo commit
+	git reset
+
+*Ver de manera "grafica" el avance del branch
+	git log --graph
+
+*Ver de manera "lista" el avance del branch
+	git log --graph --pretty=oneline
+
+*Ver de manera "lista" el avance del branch abreviando los hash
+	git log --graph --decorate --all --oneline
+
+*Dictaminar alias para comandos
+	git config --global alias.tree "log --graph --decorate --all --oneline"
+		En este caso le agregamos el alias "tree" a la instrucción para
+		ver de manera lista el avance del branch abreviando los hash
+
+*Indicarle a Git que ignore ciertos ficheros 
+	Primero creamos el archivo .gitignore
+		touch .gitignore 
+	Agregamos los ficheros que deseamos ignorar en el editor de codigo
+		**/"Aqui se escribe el nombre del fichero que deseas ignorar"
+	
+*Comando para comparar los cambios respecto al commit anterior y el cambio en el fichero
+	git diff
+
+*Indicarle a git donde queremos que se encuentre el HEAD
+	git HEAD
+
+*Cambiar el head y posicionarnos en ese lugar.
+	git checkout (hash abreviado del commit a donde queremos asignar el head)
+
+
+*Hacer un git reset hard
+	El git reset hard, regresa a un punto especifico de la rama y borra las posteriores
+		git reset --hard agregarElHashAbrebiadoDelCommit
+	El git reset hard también le asigna el HEAD al commit que seleccionamos.
+
+*Restaurar despues de un git reset hard
+	En este caso solamente tendríamos que volver a escribir 
+		git reset --hard agregarElHashAbrebiadoDelMismoCommitDelHardResetAnterior
+
+*Mostrar el historial de acciones
+	git reflog
+
+*Guardar todos los ficheros pendientes y agregarlos al stage
+	git add .
+
+*Crear un tag
+	Los tags nos sirven para marcar posiciones importantes de codigo, como por ejemplo
+	versiones "terminadas" o implementaciones importantes, e incluso ahora sería mucho
+	mas simple ya que las tags nos permiten un desplazamiento sin utilizar los hash.
+		git tag nombreDelTag
+	El tag se crea en la posición donde escribiste esa instrucción.
+
+*Desplazamiento con tags
+	para un desplazamiento normal, antes se utilizaba el 
+		git checkout nombreHash 
+	sin embargo ahora podemos hacerlo con el nombre del tag
+		git checkout tags/nombreTag
+
+*Crear branchs
+	git branch nombreNewBranch
+
+*Moverse entre ramas
+	git switch nombreDeLaRamaQueDeseasIr
+
+*Combinar cambios entre ramas
+	git merge SeleccionarElNombreDeLaRamaQueQuieresCombinarLosCambios
